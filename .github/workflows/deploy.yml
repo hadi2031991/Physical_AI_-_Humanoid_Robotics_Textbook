@@ -1,0 +1,35 @@
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # This branch is where your Docusaurus project is located.
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Fetch all history for @docusaurus/plugin-content-docs, which needs it to generate a last updated date.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Adjust to your Node.js version
+
+      - name: Install dependencies
+        run: npm install --prefix book-docusaurus-site # Install dependencies in the Docusaurus project directory
+
+      - name: Build Docusaurus website
+        run: npm run build --prefix book-docusaurus-site # Build the Docusaurus website
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book-docusaurus-site/build # The output directory of your Docusaurus build
+          # The following parameters are optional
+          publish_branch: gh-pages # The branch to deploy to GitHub Pages (usually gh-pages)
+          # cname: example.com # Uncomment if you use a custom domain

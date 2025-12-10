@@ -1,0 +1,50 @@
+# Book Structure Specification
+title: Physical AI & Humanoid Robotics Textbook
+parts:
+  - id: part1
+    title: Foundations of Physical AI
+    chapters:
+      - id: ch1
+        title: Introduction to Physical AI
+      - id: ch2
+        title: Robotics Fundamentals
+      - id: ch3
+        title: Sensors & Perception
+      - id: ch4
+        title: Humanoid Design Principles
+  - id: part2
+    title: Intelligence for Robots
+    chapters:
+      - id: ch5
+        title: Embodied Intelligence
+      - id: ch6
+        title: AI Agents for Robotics
+      - id: ch7
+        title: Computer Vision & Multimodal Models
+      - id: ch8
+        title: Language & Cognitive Architectures
+  - id: part3
+    title: Building & Programming Humanoids
+    chapters:
+      - id: ch9
+        title: Motion Planning & Manipulation
+      - id: ch10
+        title: Hardware Platforms
+      - id: ch11
+        title: Human–Robot Interaction
+      - id: ch12
+        title: Cloud Robotics & Edge AI
+  - id: part4
+    title: Future of Work
+    chapters:
+      - id: ch13
+        title: Industrial Applications
+      - id: ch14
+        title: Ethics & Workforce Transition
+appendices:
+  - id: math
+    title: Math Fundamentals
+  - id: ros2
+    title: ROS2 Overview
+  - id: simulation-tools
+    title: Simulation Tools
