@@ -15,14 +15,10 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://hadi2031991.github.io', // Placeholder
+  url: 'https://physical-ai-humanoid-robotics-textb-dusky.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/ai-book/book-docusaurus-site/', // Base URL for GitHub Pages
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'hadi2031991', // Usually your GitHub org/user name.
-  projectName: 'ai-book', // Usually your repo name.
+  baseUrl: '/',
 
   onBrokenLinks: 'throw',
 
