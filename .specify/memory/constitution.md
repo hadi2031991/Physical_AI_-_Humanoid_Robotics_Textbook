@@ -1,51 +1,61 @@
 <!--
 ---
-version_change: "0.0.0 -> 1.0.0"
+version_change: "1.0.0 -> 2.0.0"
 modified_principles:
+  - "Principle I: Adherence to the Expert Persona"
+  - "Principle II: Defined Technology Stack"
+  - "Principle III: Dual-Mode RAG Chatbot"
+  - "Principle IV: Spec-Driven and Modular Development"
+added_sections: []
+removed_sections:
   - "I. Accuracy, Clarity, and Academic Tone"
   - "II. Future-Oriented Perspective"
   - "III. Modular Chapter Organization"
-added_sections:
-  - "Technical Constraints"
-  - "Project Scope"
-  - "Governance"
-removed_sections: []
 templates_updated:
   - "`.specify/memory/constitution.md` (✅ updated)"
-  - "`.specify/templates/plan-template.md` (⚠ pending, dynamic)"
-  - "`.specify/templates/spec-template.md` (⚠ pending, no changes needed)"
-  - "`.specify/templates/tasks-template.md` (⚠ pending, no changes needed)"
+  - "`.specify/templates/plan-template.md` (✅ updated)"
+  - "`.specify/templates/spec-template.md` (✅ updated)"
+  - "`.specify/templates/tasks-template.md` (✅ updated)"
 todos: []
 ---
 -->
-# Physical AI & Humanoid Robotics Textbook Constitution
+# AI Book Constitution
 
 ## Core Principles
 
-### I. Accuracy, Clarity, and Academic Tone
-All content must be factually accurate, clearly written, and maintain a rigorous academic tone suitable for a university-level textbook.
+### I. Adherence to the Expert Persona
+All development, architectural decisions, and communication must align with the persona of an expert full-stack engineer specializing in Retrieval-Augmented Generation (RAG), OpenAI Agents, FastAPI, Neon Serverless Postgres, and Qdrant Cloud vector search. This ensures the project benefits from specialized expertise and follows industry best practices for the chosen technologies.
 
-### II. Future-Oriented Perspective
-The textbook will explore the collaborative future of humans, AI, and robotics, presenting a forward-looking and integrated view.
+### II. Defined Technology Stack
+The project will exclusively use the following technologies for its core functionality:
+- **Backend API:** FastAPI
+- **Vector Search:** Qdrant Cloud
+- **Database:** Neon Serverless Postgres
+- **AI/LLM:** OpenAI Platform (Agents, Embeddings)
+- **Frontend Host:** Docusaurus
 
-### III. Modular Chapter Organization
-Content is structured in self-contained, modular chapters to facilitate reading, updates, and curriculum integration.
+This standardization ensures maintainability, interoperability, and focuses development effort.
 
-## Technical Constraints
+### III. Dual-Mode RAG Chatbot
+The primary deliverable is a Retrieval-Augmented Generation (RAG) chatbot embedded in the Docusaurus site. It MUST support two modes of operation:
+1.  **Global Q&A:** Answers questions based on the entire book's content.
+2.  **Contextual Q&A:** Answers questions based only on user-selected text from the website.
 
-- Must use the Spec-Kit Plus `book-docusaurus` template.
-- All book content must be generated as Markdown files located in the `/docs/` directory.
-- Sidebars and navigation configuration must be auto-generated to ensure consistency.
+This addresses the core functional requirement of providing both broad and specific information retrieval to the user.
+
+### IV. Spec-Driven and Modular Development
+Development must follow a specification-driven approach. Features will be broken down into modular, testable components. The backend (FastAPI), frontend (Docusaurus/React), and data pipelines (RAG) should be decoupled to the greatest extent possible to promote clarity, reduce complexity, and facilitate parallel development and testing.
 
 ## Project Scope
 
-- **Content Generation:** Produce 14 chapters plus appendices.
-- **Scaffolding:** Set up the complete Docusaurus project structure.
-- **Deployment:** Configure the project for deployment to GitHub Pages.
-- **Consistency:** Ensure uniform structure, formatting, and navigation across the entire textbook.
+- **Backend:** Implement a FastAPI service for handling chatbot queries, including RAG pipeline orchestration.
+- **Frontend:** Develop a React component to be embedded in Docusaurus, providing the chatbot UI and handling user text selection.
+- **RAG Pipeline:** Build the data ingestion and retrieval pipeline to populate and query Qdrant from the book's content.
+- **Integration:** Fully integrate the frontend component with the backend API.
+- **Deployment:** Configure the backend and frontend for a production environment.
 
 ## Governance
 
 This constitution guides the project's development. All contributions must align with these principles and constraints. Amendments require team consensus and documentation.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-09 | **Last Amended**: 2025-12-09
+**Version**: 2.0.0 | **Ratified**: 2025-12-09 | **Last Amended**: 2025-12-10

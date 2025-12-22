@@ -20,10 +20,9 @@ description: "Task list template for feature implementation"
 
 ## Path Conventions
 
-- **Single project**: `src/`, `tests/` at repository root
-- **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+- **Backend API**: `rag-chatbot-api/src/`, `rag-chatbot-api/tests/`
+- **Frontend App**: `book-docusaurus-site/src/`
+- Paths shown below are adjusted for the project's backend/frontend structure.
 
 <!-- 
   ============================================================================
@@ -48,9 +47,9 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+- [ ] T001 Create `rag-chatbot-api` project structure per implementation plan
+- [ ] T002 Initialize FastAPI project with dependencies (Qdrant, Neon, OpenAI)
+- [ ] T003 [P] Configure linting and formatting tools for both frontend and backend
 
 ---
 
@@ -62,12 +61,11 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T004 Setup database connection and models in `rag-chatbot-api/src/models/`
+- [ ] T005 [P] Setup API routing and middleware in `rag-chatbot-api/src/api/`
+- [ ] T006 Configure RAG pipeline core in `rag-chatbot-api/src/core/`
+- [ ] T007 Configure error handling and logging for the API
+- [ ] T008 Setup environment configuration for both frontend and backend
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -83,17 +81,18 @@ Examples of foundational tasks (adjust based on your project):
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T010 [P] [US1] Contract test for [endpoint] in `rag-chatbot-api/tests/contract/test_[name].py`
+- [ ] T011 [P] [US1] Integration test for [user journey] in `rag-chatbot-api/tests/integration/test_[name].py`
+- [ ] T012 [P] [US1] Component test for Chatbot UI in `book-docusaurus-site/src/components/Chatbot/`
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
-- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T016 [US1] Add validation and error handling
-- [ ] T017 [US1] Add logging for user story 1 operations
+- [ ] T013 [P] [US1] Create [Entity] model in `rag-chatbot-api/src/models/[entity].py`
+- [ ] T014 [US1] Implement [Service] in `rag-chatbot-api/src/services/[service].py`
+- [ ] T015 [US1] Implement API [endpoint] in `rag-chatbot-api/src/api/[endpoint].py`
+- [ ] T016 [P] [US1] Create Chatbot UI component in `book-docusaurus-site/src/components/Chatbot/index.tsx`
+- [ ] T017 [US1] Implement API client service in `book-docusaurus-site/src/services/api.ts`
+- [ ] T018 [US1] Integrate Chatbot component into Docusaurus site
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 

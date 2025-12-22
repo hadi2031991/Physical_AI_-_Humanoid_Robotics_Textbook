@@ -1,0 +1,13 @@
+# Python-specific ignores
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# General ignores
+*.log
+.env
+.DS_Store
