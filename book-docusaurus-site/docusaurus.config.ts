@@ -70,6 +70,11 @@ const config: Config = {
           label: 'Textbook',
         },
         {
+          to: '/chatbot',
+          label: 'Chatbot',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/hadi2031991/ai-book',
           label: 'GitHub',
           position: 'right',
