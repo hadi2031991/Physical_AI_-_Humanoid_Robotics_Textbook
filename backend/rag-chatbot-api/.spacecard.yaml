@@ -1,0 +1,7 @@
+title: 'RAG Chatbot: Ask Questions About Your Documents'
+emoji: 🤖
+colorFrom: blue
+colorTo: red
+sdk: docker
+pinned: false
+license: mit

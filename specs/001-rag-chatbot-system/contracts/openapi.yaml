@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  version: 1.0.0
+  description: API for the RAG Chatbot System, handling content ingestion and Q&A.
+
+servers:
+  - url: /api/v1
+    description: Default API server
+
+paths:
+  /health:
+    get:
+      summary: Health Check
+      operationId: get_health_status
+      tags:
+        - System
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  database:
+                    type: string
+                    example: "connected"
+                  vector_db:
+                    type: string
+                    example: "connected"
+
+  /ingest:
+    post:
+      summary: Ingest Book Content
+      operationId: ingest_book_content
+      tags:
+        - Ingestion
+      security:
+        - AdminAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content_paths:
+                  type: array
+                  items:
+                    type: string
+                  description: List of file paths or URLs to content to ingest.
+                  example: ["/path/to/chapter1.md", "http://example.com/chapter2.md"]
+              required:
+                - content_paths
+      responses:
+        '200':
+          description: Ingestion initiated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Ingestion process started for provided content paths."
+        '401':
+          description: Unauthorized - Admin credentials missing or invalid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Unauthorized"
+
+  /ask:
+    post:
+      summary: Ask a Question
+      operationId: ask_question
+      tags:
+        - Chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: The user's question.
+                  example: "What is RAG?"
+                conversation_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+                  description: Optional ID of an existing conversation. If null, a new conversation is started.
+                  example: "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+                selected_text:
+                  type: string
+                  nullable: true
+                  description: Optional user-selected text from the Docusaurus page for contextual Q&A.
+                  example: "Retrieval-Augmented Generation (RAG) is a technique..."
+                page_context:
+                  type: string
+                  nullable: true
+                  description: Optional full page content from the Docusaurus page for contextual Q&A.
+                  example: "<h1>Chapter 1: Introduction to RAG</h1><p>Retrieval-Augmented Generation...</p>"
+              required:
+                - query
+      responses:
+        '200':
+          description: Streaming response for the answer.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                example: "data: { \"token\": \"Hello\" }\n\ndata: { \"token\": \", world.\" }\n\n..."
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Query cannot be empty"
+
+components:
+  securitySchemes:
+    AdminAuth:
+      type: http
+      scheme: basic # Or bearer if using JWT for admin
+      description: Basic authentication for admin access (e.g., username/password).
+  schemas:
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+          nullable: true
+        started_at:
+          type: string
+          format: date-time
+        last_activity_at:
+          type: string
+          format: date-time
+    ChatMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        conversation_id:
+          type: string
+          format: uuid
+        query:
+          type: string
+        response:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        relevant_chunks:
+          type: array
+          items:
+            type: string
+            format: uuid
+          nullable: true
+        selected_text:
+          type: string
+          nullable: true
+        page_context:
+          type: string
+          nullable: true
+        model_used:
+          type: string
+        feedback:
+          type: integer
+          nullable: true
+          minimum: 1
+          maximum: 5

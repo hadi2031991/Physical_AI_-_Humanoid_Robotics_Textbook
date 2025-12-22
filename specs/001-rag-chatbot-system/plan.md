@@ -1,13 +1,13 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: RAG Chatbot System
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `001-rag-chatbot-system` | **Date**: 2025-12-10 | **Spec**: ./spec.md
+**Input**: Feature specification from `./spec.md`
 
 **Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+Build a complete, production-ready RAG system that includes a FastAPI backend for content ingestion and Q&A, and a React-based chatbot widget embedded in a Docusaurus frontend. The system must support global and contextual Q&A using OpenAI, Qdrant Cloud, and Neon Serverless Postgres.
 
 ## Technical Context
 
@@ -22,25 +22,25 @@
 **Testing**: pytest, Vitest/React Testing Library
 **Target Platform**: Web (Vercel/Netlify for frontend, preferred PaaS for backend)
 **Project Type**: Web Application (Backend + Frontend)
-**Performance Goals**: [e.g., p95 query response <3s]
-**Constraints**: Must be embeddable in Docusaurus, must support user text selection for contextual Q&A.
-**Scale/Scope**: [e.g., chatbot for a book with ~14 chapters and appendices]
+**Performance Goals**: p95 query response <3s for `/ask` endpoint; ingestion of 100 markdown pages in <5 minutes.
+**Constraints**: Must be embeddable in Docusaurus, must support user text selection for contextual Q&A, OpenAI generation model configurable, Semantic Chunking strategy for ingestion, Admin Credentials for /ingest endpoint.
+**Scale/Scope**: Chatbot for a book with ~14 chapters and appendices.
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- [ ] **Persona Alignment**: Does the plan align with the expert RAG engineer persona?
-- [ ] **Tech Stack**: Does the plan adhere to the defined technology stack (FastAPI, Neon, Qdrant, OpenAI, Docusaurus)?
-- [ ] **Dual-Mode Chatbot**: Does the plan address both global and contextual Q&A requirements?
-- [ ] **Modularity**: Is the architecture modular and specification-driven?
+- [X] **Persona Alignment**: Does the plan align with the expert RAG engineer persona?
+- [X] **Tech Stack**: Does the plan adhere to the defined technology stack (FastAPI, Neon, Qdrant, OpenAI, Docusaurus)?
+- [X] **Dual-Mode Chatbot**: Does the plan address both global and contextual Q&A requirements?
+- [X] **Modularity**: Is the architecture modular and specification-driven?
 
 ## Project Structure
 
 ### Documentation (this feature)
 
 ```text
-specs/[###-feature]/
+specs/001-rag-chatbot-system/
 ├── plan.md              # This file (/sp.plan command output)
 ├── research.md          # Phase 0 output (/sp.plan command)
 ├── data-model.md        # Phase 1 output (/sp.plan command)
@@ -82,5 +82,4 @@ book-docusaurus-site/
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| | | |

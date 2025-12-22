@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+gradio
+transformers
+torch
+sentence-transformers
+huggingface_hub
+sqlalchemy[asyncio]
+asyncpg
+aiosqlite
+python-dotenv
+PyPDF2
+docx2txt
+python-multipart
+accelerate
