@@ -37,9 +37,7 @@ export default function Home(): ReactNode {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
-        <div style={{display: 'flex', justifyContent: 'center', margin: '2rem 0'}}>
-          <img src="/img/hq720.jpg" alt="hq 720" />
-        </div>
+
       </main>
     </Layout>
   );
